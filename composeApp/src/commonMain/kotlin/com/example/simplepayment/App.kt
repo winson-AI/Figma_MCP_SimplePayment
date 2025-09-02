@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.painterResource
@@ -112,7 +113,8 @@ fun PaymentScreen() {
                 backgroundColor = if (selectedPaymentMethod == "credit") Color(0xFF3C2F2F) else Color(0xFFF3F4F6),
                 textColor = if (selectedPaymentMethod == "credit") Color.White else Color(0xFF3C2F2F),
                 cardNumberColor = Color(0xFF808080),
-                cardIcon = painterResource(Res.drawable.image_credit_card)
+                cardIcon = painterResource(Res.drawable.image_credit_card),
+                imageSize = DpSize(70.dp, 42.dp)
             )
             
             Spacer(modifier = Modifier.height(8.dp))
@@ -125,7 +127,8 @@ fun PaymentScreen() {
                 backgroundColor = if (selectedPaymentMethod == "debit") Color(0xFF3C2F2F) else Color(0xFFF3F4F6),
                 textColor = if (selectedPaymentMethod == "debit") Color.White else Color(0xFF3C2F2F),
                 cardNumberColor = Color(0xFF808080),
-                cardIcon = painterResource(Res.drawable.image_debit_card)
+                cardIcon = painterResource(Res.drawable.image_debit_card),
+                imageSize = DpSize(83.dp, 32.dp)
             )
             
             Spacer(modifier = Modifier.height(20.dp))
@@ -305,7 +308,8 @@ fun PaymentMethodCard(
     backgroundColor: Color,
     textColor: Color,
     cardNumberColor: Color,
-    cardIcon: androidx.compose.ui.graphics.painter.Painter
+    cardIcon: androidx.compose.ui.graphics.painter.Painter,
+    imageSize: DpSize
 ) {
     Row(
         modifier = Modifier
@@ -326,7 +330,7 @@ fun PaymentMethodCard(
             Image(
                 painter = cardIcon,
                 contentDescription = "Card icon",
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(imageSize)
             )
             
             Spacer(modifier = Modifier.width(12.dp))
