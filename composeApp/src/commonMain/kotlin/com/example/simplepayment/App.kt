@@ -13,8 +13,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -190,10 +193,16 @@ fun PaymentScreen() {
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = "$18.19",
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(color = Color(0xFFEF2A39))) {
+                                append("$")
+                            }
+                            withStyle(style = SpanStyle(color = Color.Black)) {
+                                append("18.19")
+                            }
+                        },
                         fontSize = 32.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = Color.Black
+                        fontWeight = FontWeight.SemiBold
                     )
                 }
                 
